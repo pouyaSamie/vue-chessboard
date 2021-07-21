@@ -60,7 +60,11 @@ export default {
             ms.map((m) => m.to)
           );
       });
-      return dests;
+      return {
+        free: false,
+        dests,
+        color: "white",
+      };
     },
     opponentMoves() {
       let originalPGN = this.game.pgn();
