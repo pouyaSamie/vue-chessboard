@@ -60,11 +60,7 @@ export default {
             ms.map((m) => m.to)
           );
       });
-      return {
-        free: false,
-        dests,
-        color: "white",
-      };
+      return dests;
     },
     opponentMoves() {
       let originalPGN = this.game.pgn();
@@ -114,7 +110,7 @@ export default {
       return filteredPromotions.length > 0; // The current movement is a promotion
     },
     changeTurn() {
-      return (orig, dest, metadata) => {
+      return (orig, dest) => {
         if (this.isPromotion(orig, dest)) {
           this.promoteTo = this.onPromotion();
         }
@@ -135,6 +131,13 @@ export default {
       if (this.showThreats) {
         this.paintThreats();
       }
+
+      //show check highlight
+      if (this.game.in_check())
+        this.board.set({
+          check: true,
+        });
+
       let threats = this.countThreats(this.toColor()) || {};
       threats["history"] = this.game.history();
       threats["fen"] = this.game.fen();
@@ -181,6 +184,11 @@ export default {
           free: this.free,
           dests: this.possibleMoves(),
         },
+        highlight: {
+          lastMove: true, // add last-move class to squares
+          check: true, // add check class to squares
+        },
+
         orientation: this.orientation,
       });
       this.board.set({
