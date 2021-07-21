@@ -1,11 +1,16 @@
 module.exports = {
-  root: true,
+  root: false,
   parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module'
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: {
+    "extends": "standard",
+    "rules": {
+        "semi": [2, "always"]
+    }
+},
   // required to lint *.vue files
   plugins: [
     'html'
@@ -15,6 +20,7 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

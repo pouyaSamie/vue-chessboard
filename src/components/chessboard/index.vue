@@ -51,6 +51,7 @@ export default {
   },
   methods: {
     possibleMoves() {
+<<<<<<< HEAD
       const dests = new Map();
       this.game.SQUARES.forEach((s) => {
         const ms = this.game.moves({ square: s, verbose: true });
@@ -59,6 +60,12 @@ export default {
             s,
             ms.map((m) => m.to)
           );
+=======
+      const dests = {};
+      this.game.SQUARES.forEach((s) => {
+        const ms = this.game.moves({ square: s, verbose: true });
+        if (ms.length) dests[s] = ms.map((m) => m.to);
+>>>>>>> 8a07236d92a13e77922fe70a2b748cd33731d86e
       });
       return dests;
     },
@@ -178,14 +185,24 @@ export default {
           dests: this.possibleMoves(),
         },
         orientation: this.orientation,
+<<<<<<< HEAD
+=======
+        highlight: {
+          lastMove: true, // add last-move class to squares
+          check: true, // add check class to squares
+        },
+>>>>>>> 8a07236d92a13e77922fe70a2b748cd33731d86e
       });
       this.board.set({
         movable: { events: { after: this.changeTurn() } },
       });
       this.afterMove();
+<<<<<<< HEAD
     },
     addMove(move) {
       this.game.move(move, { sloppy: true });
+=======
+>>>>>>> 8a07236d92a13e77922fe70a2b748cd33731d86e
     },
   },
   mounted() {
