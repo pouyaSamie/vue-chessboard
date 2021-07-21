@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitogit/vue-chessboard.git"
+    "url": "git+https://github.com/pouyaSamie/vue-chessboard"
   },
   "bugs": {
     "url": "https://github.com/vitogit/vue-chessboard/issues"
